@@ -1,13 +1,23 @@
 # Utils Collection
 
-A collection of useful Python utilities for common tasks. Zero dependencies — only Python stdlib.
+A collection of useful Python utilities for common tasks.
+
+[![Open WhisperTranscribe in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/FitHappensML/dev-utils/blob/main/WhisperTranscribe_v1.ipynb)
 
 ## Table of Contents
+
+### Scripts (stdlib-only)
 
 | Utility | Description |
 |---------|-------------|
 | [ipynb_to_py](#ipynb_to_py) | Convert Jupyter notebooks to Python scripts (code only) |
 | [collect_code](#collect_code) | Collect code from a directory into a single Markdown file |
+
+### Colab Notebooks
+
+| Notebook | Description |
+|----------|-------------|
+| [WhisperTranscribe](#whispertranscribe) | Audio transcription with OpenAI Whisper (3 presets, auto language detection) |
 
 ## Settings
 
@@ -95,6 +105,42 @@ python collect_code.py . --ignore-ext .log .csv
   "ignore_extensions": [".pyc", ".log", ".svg", ".png", ".jpg", ".jpeg", ".gif", ".ico", ".lock", ".zip", ".gz"]
 }
 ```
+
+---
+
+## WhisperTranscribe
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/FitHappensML/dev-utils/blob/main/WhisperTranscribe_v1.ipynb)
+
+Google Colab notebook for audio-to-text transcription using OpenAI's Whisper model (via [faster-whisper](https://github.com/SYSTRAN/faster-whisper) engine).
+
+### Features
+
+- Three presets: **small** (fast), **medium** (balanced), **high** (best quality)
+- 99 languages with automatic detection
+- Output: plain text (.txt), markdown (.md), SRT subtitles (.srt)
+- Export audio with silence removed (.mp3)
+- Runs on free Colab T4 GPU (all presets)
+
+### Presets
+
+| Preset | Model | Beam size | VRAM | Speed |
+|--------|-------|-----------|------|-------|
+| **small** | `small` | 1 | ~1 GB | ~30x realtime |
+| **medium** | `medium` | 3 | ~2.5 GB | ~15x realtime |
+| **high** | `large-v3` | 5 | ~5 GB | ~5x realtime |
+
+### How to use
+
+1. Open the notebook in Google Colab (click the badge above)
+2. Set runtime to GPU: **Runtime → Change runtime type → GPU (T4)**
+3. Run all setup cells (Section 1)
+4. Select preset and options (Section 2)
+5. Upload audio file (Section 3)
+6. Run transcription (Section 4)
+7. Download results (Section 5)
+
+**Location:** `WhisperTranscribe_v1.ipynb`
 
 ---
 
